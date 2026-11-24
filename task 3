@@ -1,0 +1,103 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Employee
+{
+protected:
+    string name;
+    int id;
+public:
+    void input() {
+        cin.ignore();
+        cout << "Enter name of the employee: ";
+        getline(cin, name);
+        cout << "Enter the identification number of the employee: ";
+        cin >> id;
+    }
+    void show() {
+        cout << "Name is: " << name << endl;
+        cout << "ID is: " << id << endl;
+    }
+};
+class Manager : public Employee {
+private:
+    string title;
+    string salary;
+ 
+public:
+    void input() {
+        Employee::input();
+        cin.ignore();
+        cout << "Enter Title: ";
+        getline(cin, title);
+        cout << "Enter the Salary: ";
+        getline(cin, salary);
+    }
+    void show() {
+        Employee::show();
+        cout << "Title: " << title << endl;
+        cout << "Salary: " << salary << endl;
+    }
+};
+class Scientist : public Employee {
+private:
+    int publications;
+    string salary;
+public:
+    void input() {
+        Employee::input();
+        cout << "Enter the number of publications: ";
+        cin >> publications;
+        cin.ignore();
+        cout << "Enter the Salary: ";
+        getline(cin, salary);
+    }
+    void show() {
+        Employee::show();
+        cout << "Publications: " << publications << endl;
+        cout << "Salary: " << salary << endl;
+    }
+};
+class Clerk : public Employee {
+private:
+    int overtime;
+public:
+    void input() {
+        Employee::input();
+        cout << "Enter the number of Overtime hours worked: ";
+        cin >> overtime;
+    }
+    void show() {
+        Employee::show();
+        cout << "Overtime: " << overtime << endl;
+    }
+};
+int main() {
+    Manager m1, m2;
+    Scientist s1;
+    Clerk c1;
+    cout << "Enter the data for manager:" << endl;
+    m1.input();
+    cout << "****************************************" << endl;
+    cout << "Enter the data for manager:" << endl;
+    m2.input();
+    cout << "****************************************" << endl;
+    cout << "Enter the data for scientist:" << endl;
+    s1.input();
+    cout << "****************************************" << endl;
+    cout << "Enter the data for clerk:" << endl;
+    c1.input();
+    cout << "****************************************" << endl;
+    cout << "Data for manager:" << endl;
+    m1.show();
+    cout << "****************************************" << endl;
+    cout << "Data for manager:" << endl;
+    m2.show();
+    cout << "****************************************" << endl;
+    cout << "Data for scientist:" << endl;
+    s1.show();
+    cout << "****************************************" << endl;
+    cout << "Data for Clerk:" << endl;
+    c1.show();
+    return 0;
+}
