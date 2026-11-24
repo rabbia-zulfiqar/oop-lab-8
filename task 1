@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+class Square 
+{
+protected:
+    int num;
+public:
+    void setNumber(int n)
+    {
+        num = n;
+    }
+    int calculateSquare() 
+    {
+        return num * num;
+    }
+};
+class Cube : public Square 
+{
+public:
+    int calculateCube() {
+        return calculateSquare() * num;
+    }
+};
+int main() {
+    Cube c;
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    c.setNumber(n);
+    cout << "Square: " << c.calculateSquare() << endl;
+    cout << "Cube: " << c.calculateCube() << endl;
+    return 0;
+}
